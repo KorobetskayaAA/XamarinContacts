@@ -7,6 +7,15 @@
              Title="Контакты"
              x:Class="XamarinContacts.MainPage">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="AddContact_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="&#xf234;" 
+                                 FontFamily="{StaticResource FontAwesomeSolid}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
     <StackLayout>
         <ListView ItemsSource="{Binding}" ItemSelected="ListView_ItemSelected">
             <ListView.ItemTemplate>
@@ -21,9 +30,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="&#xf234;" 
-                FontFamily="{StaticResource FontAwesomeSolid}" 
-                Clicked="AddContact_Clicked"/>
     </StackLayout>
 
 </ContentPage>

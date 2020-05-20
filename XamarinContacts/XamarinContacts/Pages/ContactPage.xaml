@@ -5,6 +5,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XamarinContacts.ContactPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="SaveButton_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="&#xf00c;" 
+                                 FontFamily="{StaticResource FontAwesomeSolid}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Clicked="DeleteButton_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="&#xf1f8;" 
+                                 FontFamily="{StaticResource FontAwesomeSolid}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="0,0,0,100">
@@ -22,16 +38,7 @@
                        Placeholder="Введите адрес почты"
                        Keyboard="Email" />
 
-                <FlexLayout Direction="Row" AlignContent="SpaceBetween">
-                    <Button Text="&#xf00c;" 
-                            FontFamily="{StaticResource FontAwesomeSolid}"
-                            Clicked="SaveButton_Clicked"/>
-                    <Button Text="&#xf1f8;" 
-                            FontFamily="{StaticResource FontAwesomeSolid}"  
-                            Clicked="DeleteButton_Clicked" />
-                    <Button Text="&#xf0e2;" 
-                            FontFamily="{StaticResource FontAwesomeSolid}"  
-                            Clicked="CancelButton_Clicked" />
+                <FlexLayout JustifyContent="SpaceEvenly">
                     <Button Text="&#xf095;" 
                             FontFamily="{StaticResource FontAwesomeSolid}"  
                             Clicked="MakePhoneCall" />
