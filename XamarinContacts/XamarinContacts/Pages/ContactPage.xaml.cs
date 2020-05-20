@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,13 +23,25 @@ namespace XamarinContacts
             Contact contact = (Contact)BindingContext;
             if (!string.IsNullOrEmpty(contact.Name))
             {
-                App.Repository.SaveContact(contact);
+                try
+                {
+                    App.Repository.SaveContact(contact);
+                    Navigation.PopAsync();
+                }
+                catch (SQLiteException ex)
+                {
+                    // вид сообщения об ошибке:
+                    // UNIQUE constraint failed: Contact.Name
+                    if (ex.Message.Contains("Contact.Name"))
+                    {
+                        DisplayAlert("Ошибка!", "Контакт с таким именем уже есть", "Ладно");
+                    }
+                }
             }
             else
             {
                 DisplayAlert("Ошибка!", "Имя контакта не может быть пустым", "Ладно");
             }
-            Navigation.PopAsync();
         }
 
         private void DeleteButton_Clicked(object sender, EventArgs e)
