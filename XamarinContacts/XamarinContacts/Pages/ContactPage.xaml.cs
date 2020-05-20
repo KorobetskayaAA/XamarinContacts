@@ -20,7 +20,14 @@ namespace XamarinContacts
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
             Contact contact = (Contact)BindingContext;
-            App.Repository.SaveContact(contact);
+            if (!string.IsNullOrEmpty(contact.Name))
+            {
+                App.Repository.SaveContact(contact);
+            }
+            else
+            {
+                DisplayAlert("Ошибка!", "Имя контакта не может быть пустым", "Ладно");
+            }
             Navigation.PopAsync();
         }
 
