@@ -16,7 +16,7 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     
-    <StackLayout>
+    <StackLayout Margin="10">
         <ListView ItemsSource="{Binding}" ItemSelected="ListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>

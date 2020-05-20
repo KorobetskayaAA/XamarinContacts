@@ -22,6 +22,11 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
         <ScrollView>
             <StackLayout Padding="0,0,0,100">
                 <Label Text="Имя" />
@@ -37,19 +42,20 @@
                 <Entry Text="{Binding Email}" 
                        Placeholder="Введите адрес почты"
                        Keyboard="Email" />
-
-                <FlexLayout JustifyContent="SpaceEvenly">
-                    <Button Text="&#xf095;" 
-                            FontFamily="{StaticResource FontAwesomeSolid}"  
-                            Clicked="MakePhoneCall" />
-                    <Button Text="&#xf7cd;" 
-                            FontFamily="{StaticResource FontAwesomeSolid}"  
-                            Clicked="SendMessage" />
-                    <Button Text="&#xf0e0;" 
-                            FontFamily="{StaticResource FontAwesomeRegular}" 
-                            Clicked="SendEmail" />
-                </FlexLayout>
             </StackLayout>
         </ScrollView>
+
+        <FlexLayout Grid.Row="1" JustifyContent="SpaceEvenly">
+            <Button Text="&#xf095;" 
+                    FontFamily="{StaticResource FontAwesomeSolid}"  
+                    Clicked="MakePhoneCall" />
+            <Button Text="&#xf7cd;" 
+                    FontFamily="{StaticResource FontAwesomeSolid}"  
+                    Clicked="SendMessage" />
+            <Button Text="&#xf0e0;" 
+                    FontFamily="{StaticResource FontAwesomeRegular}" 
+                    Clicked="SendEmail" />
+        </FlexLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
