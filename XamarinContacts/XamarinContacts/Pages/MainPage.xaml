@@ -21,7 +21,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Добавить" Clicked="AddContact_Clicked"/>
+        <Button Text="&#xf234;" 
+                FontFamily="{StaticResource FontAwesomeSolid}" 
+                Clicked="AddContact_Clicked"/>
     </StackLayout>
 
 </ContentPage>

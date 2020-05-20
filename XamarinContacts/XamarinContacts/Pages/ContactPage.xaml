@@ -21,12 +21,27 @@
                 <Entry Text="{Binding Email}" 
                        Placeholder="Введите адрес почты"
                        Keyboard="Email" />
-            
-                <StackLayout>
-                    <Button Text="Сохранить" Clicked="SaveButton_Clicked"/>
-                    <Button Text="Удалить" Clicked="DeleteButton_Clicked" />
-                    <Button Text="Отменить" Clicked="CancelButton_Clicked" />
-                </StackLayout>
+
+                <FlexLayout Direction="Row" AlignContent="SpaceBetween">
+                    <Button Text="&#xf00c;" 
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Clicked="SaveButton_Clicked"/>
+                    <Button Text="&#xf1f8;" 
+                            FontFamily="{StaticResource FontAwesomeSolid}"  
+                            Clicked="DeleteButton_Clicked" />
+                    <Button Text="&#xf0e2;" 
+                            FontFamily="{StaticResource FontAwesomeSolid}"  
+                            Clicked="CancelButton_Clicked" />
+                    <Button Text="&#xf095;" 
+                            FontFamily="{StaticResource FontAwesomeSolid}"  
+                            Clicked="MakePhoneCall" />
+                    <Button Text="&#xf7cd;" 
+                            FontFamily="{StaticResource FontAwesomeSolid}"  
+                            Clicked="SendMessage" />
+                    <Button Text="&#xf0e0;" 
+                            FontFamily="{StaticResource FontAwesomeRegular}" 
+                            Clicked="SendEmail" />
+                </FlexLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -1,5 +1,4 @@
-﻿using SQLite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +6,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using Plugin.Messaging;
+using SQLite;
 
 namespace XamarinContacts
 {
@@ -54,6 +56,40 @@ namespace XamarinContacts
         private void CancelButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private void MakePhoneCall(object sender, EventArgs e)
+        {
+            var dialer = CrossMessaging.Current.PhoneDialer;
+            if (dialer.CanMakePhoneCall)
+            {
+                Contact contact = (Contact)BindingContext;
+                dialer.MakePhoneCall(contact.Phone);
+            }
+        }
+
+        private void SendMessage(object sender, EventArgs e)
+        {
+            var dialer = CrossMessaging.Current.SmsMessenger;
+            if (dialer.CanSendSms)
+            {
+                Contact contact = (Contact)BindingContext;
+                dialer.SendSms(contact.Phone);
+            }
+        }
+
+        private void SendEmail(object sender, EventArgs e)
+        {
+            var dialer = CrossMessaging.Current.EmailMessenger;
+            if (dialer.CanSendEmail)
+            {
+                Contact contact = (Contact)BindingContext;
+                dialer.SendEmail(contact.Email, "", $"Привет, {contact.Name}");
+            }
+            else
+            {
+                DisplayAlert("Ошибка!", "Невозможно написать письмо", "Ладно");
+            }
         }
     }
 }

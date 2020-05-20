@@ -6,6 +6,15 @@
              mc:Ignorable="d"
              x:Class="XamarinContacts.App">
     <Application.Resources>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+            <On Platform="Android"  Value="FontAwesome5Regular.otf#Regular" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+            <On Platform="Android"  Value="FontAwesome5Solid.otf#Solid" />
+        </OnPlatform>
 
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
     </Application.Resources>
 </Application>
