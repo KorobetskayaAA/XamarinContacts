@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinContacts.ContactPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="0,0,0,100">
+                <Label Text="Имя" />
+                <Entry Text="{Binding Name}" 
+                       Placeholder="Введите имя" />
+            
+                <Label Text="Телефон" />
+                <Entry Text="{Binding Phone}" 
+                       Placeholder="Введите номер телефона"
+                       Keyboard="Telephone"/>
+            
+                <Label Text="Email" />
+                <Entry Text="{Binding Email}" 
+                       Placeholder="Введите адрес почты"
+                       Keyboard="Email" />
+            
+                <StackLayout>
+                    <Button Text="Сохранить" Clicked="SaveButton_Clicked"/>
+                    <Button Text="Удалить" Clicked="DeleteButton_Clicked" />
+                    <Button Text="Отменить" Clicked="CancelButton_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
