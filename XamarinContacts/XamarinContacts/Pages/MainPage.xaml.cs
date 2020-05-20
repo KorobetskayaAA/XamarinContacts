@@ -24,20 +24,21 @@ namespace XamarinContacts
             base.OnAppearing();
         }
 
-        async void AddContact_Clicked(object sender, EventArgs e)
+        async void ShowContactPageAsync(Contact contact)
         {
-            Contact contact = new Contact();
             ContactPage cp = new ContactPage();
             cp.BindingContext = contact;
             await Navigation.PushAsync(cp);
         }
 
-        async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        void AddContact_Clicked(object sender, EventArgs e)
         {
-            Contact contact = (Contact)e.SelectedItem;
-            ContactPage cp = new ContactPage();
-            cp.BindingContext = contact;
-            await Navigation.PushAsync(cp);
+            ShowContactPageAsync(new Contact());
+        }
+
+        void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            ShowContactPageAsync((Contact)e.SelectedItem);
         }
     }
 }
