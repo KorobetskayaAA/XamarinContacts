@@ -8,9 +8,20 @@
              x:Class="XamarinContacts.MainPage">
 
     <StackLayout>
-        <Label Text="Контакты" />
-        
-
+        <ListView ItemsSource="{Binding}" ItemSelected="ListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Label Text="{Binding Name}" FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Добавить" Clicked="AddContact_Clicked"/>
     </StackLayout>
 
 </ContentPage>
