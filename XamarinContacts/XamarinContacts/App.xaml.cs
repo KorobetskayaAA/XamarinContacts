@@ -2,15 +2,32 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using System.IO;
+
 namespace XamarinContacts
 {
     public partial class App : Application
     {
+        const string DATABASE_NAME = "contacts.db";
+        static ContactRepository repository;
+        public static ContactRepository Repository
+        {
+            get
+            {
+                if (repository == null)
+                {
+                    string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                    repository = new ContactRepository(Path.Combine(path, DATABASE_NAME));
+                }
+                return repository;
+            }
+        }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
