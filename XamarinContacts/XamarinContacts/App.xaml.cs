@@ -14,8 +14,10 @@ namespace XamarinContacts
         {
             get
             {
+                // если еще не подключались к БД
                 if (repository == null)
                 {
+                    // то подключиться
                     string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                     repository = new ContactRepository(Path.Combine(path, DATABASE_NAME));
                 }
