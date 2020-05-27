@@ -13,8 +13,46 @@
             <On Platform="Android"  Value="FontAwesome5Solid.otf#Solid" />
         </OnPlatform>
 
+        
+        <Color x:Key="BackgroundColor">#EEF</Color>
+        <Color x:Key="TextColor">#300</Color>
+        <Color x:Key="TextMutedColor">#666</Color>
+        <Color x:Key="ButtonColor">#E70</Color>
+        <Color x:Key="ButtonTextColor">#FFF</Color>
+        
+        <x:Double x:Key="IconSize">20</x:Double>
+
+
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
+        </Style>
+        
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource ButtonColor}"/>
+            <Setter Property="BarTextColor" Value="{StaticResource ButtonTextColor}"/>
+        </Style>
+
+        <Style x:Key="ToolBarIcon" TargetType="FontImageSource">
+            <Setter Property="Size" Value="19"/>
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+        </Style>   
+        
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+        </Style>  
+        
+        <Style TargetType="Editor">
+            <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+        </Style>
+
         <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource ButtonColor}"/>
+            <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}"/>
             <Setter Property="FontSize" Value="24"/>
+            <Setter Property="CornerRadius" Value="24"/>
         </Style>
     </Application.Resources>
 </Application>

@@ -10,20 +10,23 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Clicked="AddContact_Clicked">
             <ToolbarItem.IconImageSource>
-                <FontImageSource Glyph="&#xf234;" 
+                <FontImageSource Glyph="&#xf234;" Size="{StaticResource IconSize}"
                                  FontFamily="{StaticResource FontAwesomeSolid}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     
     <StackLayout Margin="10">
-        <ListView ItemsSource="{Binding}" ItemSelected="ListView_ItemSelected">
+        <ListView ItemsSource="{Binding}" 
+                  ItemSelected="ListView_ItemSelected"
+                  HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <StackLayout>
+                            <StackLayout Margin="2">
                                 <Label Text="{Binding Name}" FontSize="Medium"/>
+                                <Label Text="{Binding Phone}" FontSize="Small" TextColor="{StaticResource TextMutedColor}"/>
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>

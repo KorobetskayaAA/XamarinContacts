@@ -9,13 +9,13 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Clicked="SaveButton_Clicked">
             <ToolbarItem.IconImageSource>
-                <FontImageSource Glyph="&#xf00c;" 
+                <FontImageSource Glyph="&#xf00c;" Size="{StaticResource IconSize}" 
                                  FontFamily="{StaticResource FontAwesomeSolid}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
         <ToolbarItem Clicked="DeleteButton_Clicked">
             <ToolbarItem.IconImageSource>
-                <FontImageSource Glyph="&#xf1f8;" 
+                <FontImageSource Glyph="&#xf1f8;" Size="{StaticResource IconSize}"
                                  FontFamily="{StaticResource FontAwesomeSolid}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
@@ -46,7 +46,7 @@
         </ScrollView>
 
         <FlexLayout Grid.Row="1" JustifyContent="SpaceEvenly">
-            <Button Text="&#xf095;" 
+            <Button Text="&#xf095;"
                     FontFamily="{StaticResource FontAwesomeSolid}"  
                     Clicked="MakePhoneCall" />
             <Button Text="&#xf7cd;" 
