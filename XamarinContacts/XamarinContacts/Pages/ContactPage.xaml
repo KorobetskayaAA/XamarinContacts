@@ -27,8 +27,22 @@
                 <RowDefinition />
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
-        <ScrollView>
-            <StackLayout Padding="0,0,0,100">
+            <ScrollView>
+                <StackLayout Padding="0,0,0,100">
+                    <Grid HeightRequest="200">
+                        <Image Source="{Binding ImageFile,TargetNullValue={StaticResource NoPhoto}}" />
+                        <StackLayout HorizontalOptions="End" 
+                                     VerticalOptions="End" 
+                                     Orientation="Horizontal"
+                                     Margin="4">
+                            <Button Text="&#xf030;" 
+                                    FontFamily="{StaticResource FontAwesomeSolid}" 
+                                    Clicked="TakePhoto"/>
+                            <Button Text="&#xf302;" 
+                                    FontFamily="{StaticResource FontAwesomeSolid}" 
+                                    Clicked="PickPhoto"/>
+                        </StackLayout>
+                    </Grid>
                 <Label Text="Имя" />
                 <Entry Text="{Binding Name}" 
                        Placeholder="Введите имя" />
@@ -42,20 +56,20 @@
                 <Entry Text="{Binding Email}" 
                        Placeholder="Введите адрес почты"
                        Keyboard="Email" />
-            </StackLayout>
-        </ScrollView>
+                </StackLayout>
+            </ScrollView>
 
-        <FlexLayout Grid.Row="1" JustifyContent="SpaceEvenly">
-            <Button Text="&#xf095;"
-                    FontFamily="{StaticResource FontAwesomeSolid}"  
-                    Clicked="MakePhoneCall" />
-            <Button Text="&#xf7cd;" 
-                    FontFamily="{StaticResource FontAwesomeSolid}"  
-                    Clicked="SendMessage" />
-            <Button Text="&#xf0e0;" 
-                    FontFamily="{StaticResource FontAwesomeRegular}" 
-                    Clicked="SendEmail" />
-        </FlexLayout>
+            <FlexLayout Grid.Row="1" JustifyContent="SpaceEvenly">
+                <Button Text="&#xf095;"
+                        FontFamily="{StaticResource FontAwesomeSolid}"  
+                        Clicked="MakePhoneCall" />
+                <Button Text="&#xf7cd;" 
+                        FontFamily="{StaticResource FontAwesomeSolid}"  
+                        Clicked="SendMessage" />
+                <Button Text="&#xf0e0;" 
+                        FontFamily="{StaticResource FontAwesomeRegular}" 
+                        Clicked="SendEmail" />
+            </FlexLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

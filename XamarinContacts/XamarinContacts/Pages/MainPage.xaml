@@ -24,10 +24,23 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <StackLayout Margin="2">
-                                <Label Text="{Binding Name}" FontSize="Medium"/>
-                                <Label Text="{Binding Phone}" FontSize="Small" TextColor="{StaticResource TextMutedColor}"/>
-                            </StackLayout>
+                            <Grid Margin="2,5,2,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding ImageFile,TargetNullValue={StaticResource NoPhoto}}"
+                                       HeightRequest="60" WidthRequest="60" Aspect="AspectFit" 
+                                       Margin="0,0,7,0"/>
+                                <StackLayout Margin="2" Grid.Column="1">
+                                    <Label Text="{Binding Name}" FontSize="Medium"/>
+                                    <Label Text="{Binding Phone}" FontSize="Small" TextColor="{StaticResource TextMutedColor}"/>
+                                <BoxView Grid.ColumnSpan="2" 
+                                         HeightRequest="1" 
+                                         VerticalOptions="Start"
+                                         BackgroundColor="{StaticResource TextMutedColor}"/>
+                                </StackLayout>
+                            </Grid>
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>

@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XamarinContacts.App">
+
     <Application.Resources>
         <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
             <On Platform="Android"  Value="FontAwesome5Regular.otf#Regular" />
@@ -12,12 +13,15 @@
         <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
             <On Platform="Android"  Value="FontAwesome5Solid.otf#Solid" />
         </OnPlatform>
+        <FontImageSource x:Key="NoPhoto" 
+                         Glyph="&#xf007;" Color="Silver"
+                         FontFamily="{StaticResource FontAwesomeSolid}" />
 
-        
-        <Color x:Key="BackgroundColor">#EEF</Color>
+
+        <Color x:Key="BackgroundColor">#FFF</Color>
         <Color x:Key="TextColor">#300</Color>
         <Color x:Key="TextMutedColor">#666</Color>
-        <Color x:Key="ButtonColor">#E70</Color>
+        <Color x:Key="ButtonColor">#F80</Color>
         <Color x:Key="ButtonTextColor">#FFF</Color>
         
         <x:Double x:Key="IconSize">20</x:Double>
@@ -38,14 +42,17 @@
         
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>   
         
         <Style TargetType="Entry">
             <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="22"/>
         </Style>  
         
         <Style TargetType="Editor">
             <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="22"/>
         </Style>
 
         <Style TargetType="Button">

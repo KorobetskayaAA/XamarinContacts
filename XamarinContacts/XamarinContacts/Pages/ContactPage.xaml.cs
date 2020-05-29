@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Plugin.Media;
 using Plugin.Messaging;
 using SQLite;
+using Plugin.Media.Abstractions;
 
 namespace XamarinContacts
 {
@@ -63,9 +63,11 @@ namespace XamarinContacts
             var dialer = CrossMessaging.Current.PhoneDialer;
             if (dialer.CanMakePhoneCall)
             {
-                Contact contact = (Contact)BindingContext;
-                dialer.MakePhoneCall(contact.Phone);
+                DisplayAlert("Ошибка!", "Нет доступа к телефонным звонкам.", "Ладно");
+                return;
             }
+            Contact contact = (Contact)BindingContext;
+            dialer.MakePhoneCall(contact.Phone);
         }
 
         private void SendMessage(object sender, EventArgs e)
@@ -73,9 +75,11 @@ namespace XamarinContacts
             var dialer = CrossMessaging.Current.SmsMessenger;
             if (dialer.CanSendSms)
             {
-                Contact contact = (Contact)BindingContext;
-                dialer.SendSms(contact.Phone);
+                DisplayAlert("Ошибка!", "Нет доступа к отправке SMS.", "Ладно");
+                return;
             }
+            Contact contact = (Contact)BindingContext;
+            dialer.SendSms(contact.Phone);
         }
 
         private void SendEmail(object sender, EventArgs e)
@@ -83,13 +87,42 @@ namespace XamarinContacts
             var dialer = CrossMessaging.Current.EmailMessenger;
             if (dialer.CanSendEmail)
             {
-                Contact contact = (Contact)BindingContext;
-                dialer.SendEmail(contact.Email, "", $"Привет, {contact.Name}");
+                DisplayAlert("Ошибка!", "Нет доступа к отправке писем.", "Ладно");
+                return;
             }
-            else
-            {
-                DisplayAlert("Ошибка!", "Невозможно написать письмо", "Ладно");
-            }
+            Contact contact = (Contact)BindingContext;
+            dialer.SendEmail(contact.Email, "", $"Привет, {contact.Name}");
         }
+
+        private async void TakePhoto(object sender, EventArgs e)
+        {
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await DisplayAlert("Ошибка!", "Отсутствует камера.", "Ладно");
+                return;
+            }
+            string fileName = $"{(BindingContext as Contact).Name}_{DateTime.Now:dd-MM-yy_hh-mm-ss}.jpg";
+            MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
+            {
+                SaveToAlbum = true,
+                Directory = "Photos",
+                Name = fileName
+            });
+            if (file == null)
+                return;
+            (BindingContext as Contact).ImageFile = file.Path;
+        }
+
+        private async void PickPhoto(object sender, EventArgs e)
+        {
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                DisplayAlert("Ошибка!", "Нет доступа к галерее.", "Ладно");
+                return;
+            }
+            MediaFile photo = await CrossMedia.Current.PickPhotoAsync();
+            (BindingContext as Contact).ImageFile = photo?.Path;
+        }
+
     }
 }
